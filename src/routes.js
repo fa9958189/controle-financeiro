@@ -1,3 +1,4 @@
+// Arquivo Rotas.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Logon from './pages/logon';
@@ -33,8 +34,8 @@ export default function Rotas() {
              <Route path="/listaestoque" element={<Listaestoque />} />
              <Route path="/listarsaida" element={<Listasaida />} />
              <Route path="/saidaProduto" element={<Saidaproduto />} />
-             <Route path="/cadastroCliente" element={<CadastroCliente />} /> 
-             <Route path="/listaCliente" element={<ListarCliente />} /> 
+             <Route path="/cadastrocliente" element={<CadastroCliente />} /> 
+             <Route path="/listacliente" element={<ListarCliente />} /> 
           </Routes>  
        </BrowserRouter>
    );

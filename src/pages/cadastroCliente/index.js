@@ -6,7 +6,7 @@ import { ImCancelCircle } from "react-icons/im";
 import { useNavigate } from 'react-router-dom';
 import Head from '../../componente/Head';
 
-export default function CadastroUsuario() {
+export default function CadastroCliente() { // Corrigindo o nome da função
     const navigate = useNavigate();
     const [nome, setNome] = useState("");
     const [limiteCompraPrazo, setLimiteCompraPrazo] = useState("");
@@ -20,17 +20,17 @@ export default function CadastroUsuario() {
         else if (isNaN(Number(limiteCompraPrazo)))
             alert("O limite de compra a prazo deve ser um valor numérico");
         else {
-            const usuario = {
+            const cliente = {
                 id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
                 nome,
                 limiteCompraPrazo: parseFloat(limiteCompraPrazo)
             };
 
             const banco = JSON.parse(localStorage.getItem("cd-clientes") || "[]");
-            banco.push(usuario);
+            banco.push(cliente);
             localStorage.setItem("cd-clientes", JSON.stringify(banco));
             alert("Cliente salvo com sucesso");
-            navigate("/listacliente");
+            navigate("/listaCliente"); // Corrigindo o caminho da rota
         }
     }
 
@@ -59,7 +59,7 @@ export default function CadastroUsuario() {
                                 <FaSave />
                                 Salvar
                             </button>
-                            <button className='btn-cancel' type="button" onClick={() => navigate("/listacliente")}>
+                            <button className='btn-cancel' type="button" onClick={() => navigate("/listaCliente")}>
                                 <ImCancelCircle />
                                 Cancelar
                             </button>

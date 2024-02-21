@@ -12,7 +12,8 @@ export default function Menu() {
                 <Link to="/listaprodutos" className='link'><FiPackage className='icos' />Produto</Link> {/* Adicionando ícone de produto */}
                 <Link to="/listaentrada_Produto" className='link'><FiArrowUpCircle className='icos' />Entrada produto</Link> {/* Adicionando ícone de entrada de produto */}
                 <Link to="/listaestoque" className='link'><FiArchive className='icos' />Estoque</Link> {/* Adicionando ícone de estoque */}
-                <Link to="/listarSaida" className='link'><FiArrowDownCircle className='icos' />Saída</Link> {/* Adicionando ícone de saída */}
+                <Link to="/listarsaida" className='link'><FiArrowDownCircle className='icos' />Saída</Link> {/* Adicionando ícone de saída */}
+                <Link to="/cadastrocliente" className='link'><FiUser className='icos' />Cadastro Cliente</Link> {/* Adicionando ícone de cadastro de cliente */}
             </nav>
         </div>
     )

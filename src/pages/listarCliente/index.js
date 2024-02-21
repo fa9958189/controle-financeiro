@@ -7,7 +7,7 @@ import Head from '../../componente/Head';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-export default function listacliente() {
+export default function ListaCliente() { // Corrigindo o nome da função
   const usuarios = JSON.parse(localStorage.getItem("cd-clientes") || "[]");
 
   const removerUsuario = (id) => {
@@ -40,7 +40,7 @@ export default function listacliente() {
       </div>
       <div className='principal'>
         <Head title="Lista de Clientes" />
-        <Link to="/CadastroCliente" className='btn-novo'>Cadastro Cliente</Link>
+        <Link to="/cadastroCliente" className='btn-novo'>Cadastro Cliente</Link> // Corrigindo o link para redirecionar para /cadastroCliente
         <table>
           <thead>
             <tr>
