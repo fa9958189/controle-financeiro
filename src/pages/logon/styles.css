@@ -1,33 +1,34 @@
-.logon-container{
-
+.logon-container {
     width: 100%;
     height: 100%;
+    background-color: #000; /* Define a cor de fundo como preto */
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     width: 300px;
     margin: auto;
-    
-  
 }
-.form h1{
-    color: black;
+
+.form h1 {
+    color: beige;
     text-align: center;
 }
-input{
+
+input {
     border: 1px solid #0505ee;
     padding: 5px;
     margin: 3px;
     border-radius: 5px;
     height: 18px;
 }
-img{
+
+img {
     width: 380px;
 }
-.logo{
+
+.logo {
     display: flex;
     justify-content: center;
 }
-

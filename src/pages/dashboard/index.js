@@ -1,7 +1,6 @@
 
 import React from 'react';
 import './styles.css';
-import logo from '../../assets/img/Logo.png';
 import backgroundImg from '../../assets/img/capa para o projeto.svg';
 import Menu from '../../componente/Menu';
 import imagem from '../../assets/img/lapis.svg'; // Adjust the filename accordingly

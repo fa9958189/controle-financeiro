@@ -1,24 +1,17 @@
 import './styles.css'
-import Logo from '../../assets/img/Logo.png'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import backgroundImg from '../../assets/img/capa para o projeto.svg';
-
-
 
 export default function Logon() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   
-const logar =(e)=>{
+  const logar = (e) => {
     e.preventDefault();
     navigate('/dashboard');
-}
+  }
 
   return (
     <div className="logon-container">
-      <div className='logo'>
-        <img src={Logo}></img>
-      </div>
       <section className="form">
         <h1>Faça seu login</h1>
         <form onSubmit={logar}>
@@ -28,9 +21,6 @@ const logar =(e)=>{
           <a href="/cadastroUsuario1">Novo Cadastro</a>
         </form>
       </section>
-      
     </div>
-
   )
-
 }
