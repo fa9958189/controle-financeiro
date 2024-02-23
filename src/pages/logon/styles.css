@@ -1,34 +1,70 @@
-.logon-container {
+.background-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000; /* Define a cor de fundo como preto */
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: auto;
-}
-
-.form h1 {
-    color: beige;
+    object-fit: cover;
+  }
+  
+  .logon-container {
+    position: absolute;
+    top: 50%; /* Move o formulário para o meio verticalmente */
+    left: 50%; /* Move o formulário para o meio horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza o formulário */
+    z-index: 1;
+    width: 350px; /* Aumenta o tamanho do formulário */
     text-align: center;
-}
-
-input {
+  }
+  
+  .form {
+    background-color: rgba(255, 255, 255, 0.8); /* Adiciona um fundo branco semi-transparente para o formulário */
+    padding: 40px; /* Aumenta o preenchimento do formulário */
+    border-radius: 10px;
+  }
+  
+  .form h1 {
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
     border: 1px solid #0505ee;
-    padding: 5px;
-    margin: 3px;
+    padding: 10px; /* Aumenta o preenchimento dos campos de entrada */
+    margin: 10px 0; /* Aumenta a margem dos campos de entrada */
     border-radius: 5px;
-    height: 18px;
-}
-
-img {
-    width: 380px;
-}
-
-.logo {
-    display: flex;
-    justify-content: center;
-}
+    width: 100%; /* Define a largura para ocupar todo o espaço disponível */
+    box-sizing: border-box; /* Mantém o tamanho consistente com o preenchimento e a borda */
+  }
+  
+  button {
+    background-color: #0505ee;
+    color: white;
+    border: none;
+    padding: 12px 24px; /* Aumenta o preenchimento do botão */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Aumenta a margem superior do botão */
+    width: 100%; /* Define a largura para ocupar todo o espaço disponível */
+    box-sizing: border-box; /* Mantém o tamanho consistente com o preenchimento e a borda */
+  }
+  
+  a {
+    color: #0505ee;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

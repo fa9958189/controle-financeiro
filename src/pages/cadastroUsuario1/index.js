@@ -8,22 +8,17 @@ import './cadastro.css'; // Importe o arquivo CSS renomeado
 
 export default function CadastroUsuario1() {
     const navigate = useNavigate();
-    const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
     const usuario = {
-        id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
-        nome,
         email,
         senha
     }
 
     function salvardados(e) {
         e.preventDefault();
-        if (nome === "")
-            alert("Preencha o campo nome");
-        else if (email === "")
+        if (email === "")
             alert("Preencha o campo email");
         else if (senha === "")
             alert("Preencha o campo senha");
@@ -32,7 +27,7 @@ export default function CadastroUsuario1() {
             banco.push(usuario);
             localStorage.setItem("cd-usuarios1", JSON.stringify(banco));
             alert("Usuário salvo com sucesso");
-            navigate("/logon");
+            navigate("/logon"); // Navegar de volta para a página de login
         }
     }
 
@@ -41,11 +36,6 @@ export default function CadastroUsuario1() {
             <Head title="Cadastro de Usuario" />
             <div className='form-container'>
                 <form className='form-cadastro' onSubmit={salvardados}>
-                    <input type='text'
-                        value={nome}
-                        onChange={e => setNome(e.target.value)}
-                        placeholder='Digite o nome do Usuario'
-                    />
                     <input
                         type='text'
                         value={email}
