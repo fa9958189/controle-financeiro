@@ -9,6 +9,18 @@
   width: 300px; /* Ajuste conforme necessário */
 }
 
+.input-container {
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 .acao {
   display: flex;
   justify-content: center;
@@ -20,9 +32,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 10px;
+  padding: 10px 20px;
   margin-right: 10px;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }
 
 .btn-save:hover,
