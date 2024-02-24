@@ -27,7 +27,7 @@ export default function CadastroUsuario1() {
             banco.push(usuario);
             localStorage.setItem("cd-usuarios1", JSON.stringify(banco));
             alert("Usuário salvo com sucesso");
-            navigate("/logon"); // Navegar de volta para a página de login
+            navigate("/Logon"); // Navegar de volta para a página de login
         }
     }
 

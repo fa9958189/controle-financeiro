@@ -50,6 +50,7 @@ export default function Logon() {
             />
             <button type="submit">Entrar</button>
             <a href="/cadastroUsuario1">Novo Cadastro</a>
+            <a href="/dashboard">Novo Cadastro</a>
           </form>
         </section>
       </div>
