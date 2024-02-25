@@ -11,16 +11,8 @@ export default function Listausuario() {
   const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
 
   const removerUsuario = (id) => {
-    // Filtra os usuários mantendo apenas aqueles com IDs diferentes do ID fornecido
     const novosUsuarios = banco.filter(usuario => usuario.id !== id);
-    
-    // Atualiza o localStorage com a nova lista de usuários
     localStorage.setItem("cd-usuarios", JSON.stringify(novosUsuarios));
-    
-    // Atualiza o estado ou recarrega a página para refletir as mudanças
-    // (Você pode usar estado se estiver usando um estado de componente)
-    // setState({ usuarios: novosUsuarios });
-    // Ou recarrega a página
     window.location.reload();
   };
 
@@ -47,14 +39,15 @@ export default function Listausuario() {
         <Menu />
       </div>
       <div className='principal'>
-        <Head title="Lista de Usuários" />
-        <Link to="/CadastroUsuario" className='btn-novo'>Novo Cadastro</Link>
+        <Head title="Dizimistas" />
+        <Link to="/Cadastrodizimista" className='btn-novo'>Entrada Dizimo</Link>
         <table>
           <thead>
             <tr>
               <th>Id</th>
               <th>Nome</th>
-              <th>Email</th>
+              <th>Valor</th>
+              <th>Data</th>
               <th></th>
               <th></th>
             </tr>
@@ -64,9 +57,10 @@ export default function Listausuario() {
               <tr key={usu.id}>
                 <td>{usu.id}</td>
                 <td>{usu.nome}</td>
-                <td>{usu.email}</td>
+                <td>{usu.valor}</td>
+                <td>{usu.data}</td>
                 <td className='botoes'>
-                  <Link to={`/editarusuario/${usu.id}`}>
+                  <Link to={`/editardizimista/${usu.id}`}>
                     <FiEdit size={18} color='yellow' />
                   </Link>
                 </td>

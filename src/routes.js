@@ -3,13 +3,13 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Logon from './pages/logon';
 import Dashbord from './pages/dashboard';
-import Listausuario from './pages/listarUsuario';
-import CadastroUsuario from './pages/cadastroUsuario';
-import Editarusuario from './pages/editarUsuario';
+import ListarDizimista from './pages/listarDizimista';
+import CadastroDizimista from './pages/cadastroDizimista';
+import EditarDizimista from './pages/editarDizimista';
 import CadastroUsuario1 from './pages/cadastroUsuario1';
-import Listaestoque from './pages/listarEstoque';
-import Listasaida from './pages/listarSaida';  
-import Saidaproduto from './pages/saidaProduto';
+import ListarPorcentagem from './pages/listarPorcentagem'; // Alteração aqui
+import ListaSaida from './pages/listarSaida';  
+import SaidaProduto from './pages/saidaProduto';
 
 export default function Rotas() {
    return (
@@ -17,13 +17,13 @@ export default function Rotas() {
           <Routes>
              <Route path="/" element={<Logon />} />
              <Route path="/dashboard" element={<Dashbord />} />
-             <Route path="/listausuario" element={<Listausuario />} />
-             <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+             <Route path="/listardizimista" element={<ListarDizimista />} />
+             <Route path="/cadastrodizimista" element={<CadastroDizimista />} />
              <Route path="/cadastrousuario1" element={<CadastroUsuario1 />} />
-             <Route path="/editarusuario/:id" element={<Editarusuario />} />
-             <Route path="/listaestoque" element={<Listaestoque />} />
-             <Route path="/listarsaida" element={<Listasaida />} />
-             <Route path="/saidaProduto" element={<Saidaproduto />} />
+             <Route path="/editardizimista/:id" element={<EditarDizimista />} />
+             <Route path="/listarporcentagem" element={<ListarPorcentagem />} /> // Alteração aqui
+             <Route path="/listarsaida" element={<ListaSaida />} />
+             <Route path="/saidaproduto" element={<SaidaProduto />} />
           </Routes>  
        </BrowserRouter>
    );
