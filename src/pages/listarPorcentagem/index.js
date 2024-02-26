@@ -3,6 +3,7 @@ import '../../pages/global.css';
 import Menu from '../../componente/Menu';
 import { Link } from 'react-router-dom';
 import Head from '../../componente/Head';
+import { Chart } from 'react-google-charts';
 
 export default function ListarDizimista() {
   const dizimistas = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
@@ -79,6 +80,27 @@ export default function ListarDizimista() {
             </tr>
           </tbody>
         </table>
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Chart
+            width={'500px'}
+            height={'300px'}
+            chartType="PieChart"
+            loader={<div>Loading Chart</div>}
+            data={[
+              ['Tipo', 'Valor'],
+              ['Pre benda', porcentagem1],
+              ['Congregaçao', porcentagem2],
+              ['Matriz', porcentagem3],
+            ]}
+            options={{
+              title: 'Distribuição de Porcentagem',
+              backgroundColor: 'transparent', // Definindo o fundo transparente
+              legendTextStyle: { color: 'white' }, // Definindo a cor branca para o texto da legenda
+              pieSliceTextStyle: { color: 'white' }, // Definindo a cor branca para o texto dos setores
+            }}
+          />
+        </div>
       </div>
     </div>
   );

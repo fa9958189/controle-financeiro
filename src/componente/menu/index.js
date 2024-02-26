@@ -7,9 +7,9 @@ export default function Menu() {
         <div>
             <h1>Menu</h1>
             <nav>
-                <Link to="/listardizimista" className='link'><FiUser className='icos' />Dizimista</Link> {/* Alterado para "listardizimista" */}
-                <Link to="/listarporcentagem" className='link'><FiArchive className='icos' />Porcentagem</Link> {/* Alterado para "listarporcentagem" */}
-                <Link to="/listarsaida" className='link'><FiArrowDownCircle className='icos' />Saída</Link>
+                <Link to="/listardizimista" className='link'><FiUser className='icos' />Dizimista</Link>
+                <Link to="/listarporcentagem" className='link'><FiArchive className='icos' />Porcentagem</Link>
+                <Link to="/listardespesas" className='link'><FiArrowDownCircle className='icos' />Despesas</Link> {/* Alterado para "listardespesas" */}
             </nav>
         </div>
     )
