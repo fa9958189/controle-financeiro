@@ -10,9 +10,11 @@ export default function ListarDespesas() {
   const [totalValor, setTotalValor] = useState(0);
   const [porcentagemCongregacao, setPorcentagemCongregacao] = useState(0);
   const [valorPorcentagemCongregacao, setValorPorcentagemCongregacao] = useState(0);
+  const [despesas, setDespesas] = useState([]);
 
   useEffect(() => {
     calcularTotalValor();
+    carregarDespesas();
   }, []);
 
   const calcularTotalValor = () => {
@@ -28,6 +30,16 @@ export default function ListarDespesas() {
     setValorPorcentagemCongregacao((total * 40) / 100);
   };
 
+  const carregarDespesas = () => {
+    const despesasFromLocalStorage = JSON.parse(localStorage.getItem("despesas") || "[]");
+    setDespesas(despesasFromLocalStorage);
+  };
+
+  const handleExcluir = (id) => {
+    // Implemente a lógica para exclusão aqui
+    console.log("Excluir despesa com o ID:", id);
+  };
+
   return (
     <div className="dashboard-container">
       <div className='menu'>
@@ -35,32 +47,46 @@ export default function ListarDespesas() {
       </div>
       <div className='principal'>
         <Head title="Despesas" />
+        <Link to="/cadastrodespesas" className='btn-novo'>Despesas</Link>
       
         <table>
           <thead>
             <tr>
               <th>Porcentagem</th>
               <th>Valor</th>
+              <th>Ações</th> {/* Coluna para os botões de ação */}
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Congregação: {porcentagemCongregacao.toFixed(2)}%</td>
               <td>R${valorPorcentagemCongregacao.toFixed(2)}</td>
+              <td></td> {/* Coluna vazia para as ações */}
             </tr>
           </tbody>
         </table>
 
+        <h2>Despesas Cadastradas</h2>
         <table>
           <thead>
             <tr>
-              <th>Valor Total</th>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Data</th>
+              <th>Ações</th> {/* Coluna para os botões de ação */}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>R${totalValor.toFixed(2)}</td>
-            </tr>
+            {despesas.map(despesa => (
+              <tr key={despesa.id}>
+                <td>{despesa.nome}</td>
+                <td>{despesa.valor}</td>
+                <td>{despesa.data}</td>
+                <td>
+                  <button onClick={() => handleExcluir(despesa.id)}>Excluir</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
