@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Chart from 'react-google-charts';
 import '../../pages/global.css';
 import Menu from '../../componente/Menu';
 import { Link } from 'react-router-dom';
@@ -52,55 +53,45 @@ export default function ListarDespesas() {
         <Menu />
       </div>
       <div className='principal'>
-        <Head title="Despesas" />
-        <Link to="/cadastrodespesas" className='btn-novo'>Despesas</Link>
+        <Head title="Despesas" />   
       
-        <table>
-          <thead>
-            <tr>
-              <th>Porcentagem</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Congregação: {porcentagemCongregacao.toFixed(2)}%</td>
-              <td>R${valorPorcentagemCongregacao.toFixed(2)}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Despesas Cadastradas</h2>
-        <div style={{ overflowY: 'auto', maxHeight: '300px' }}>
-          <table>
-            <thead>
-              <tr>
-                <th>Nome</th>
-                <th>Valor</th>
-                <th>Data</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {despesas.slice(0, 5).map(despesa => (
-                <tr key={despesa.id}>
-                  <td>{despesa.nome}</td>
-                  <td>{despesa.valor}</td>
-                  <td>{despesa.data}</td>
-                  <td>
-                    <button onClick={() => handleExcluir(despesa.id)}>Excluir</button>
-                  </td>
-                </tr>
-              ))}
-                       <div style={{ marginTop: '20px', textAlign: 'center', color: 'white' }}>
-                  <p>Valor das despesas: R${valorDespesas.toFixed(2)}</p>
-                  <p>Valor restante para a congregação: R${valorRestanteCongregacao.toFixed(2)}</p>
-                </div>
-            </tbody>
-          </table>
+        {/* Gráfico de despesas */}
+        <div style={{ width: '500px', height: '300px', margin: 'auto', backgroundColor: 'transparent' }}>
+          <Chart
+            chartType="ColumnChart"
+            loader={<div>Carregando Gráfico</div>}
+            data={[
+              ['Despesa', 'Valor'],
+              ...despesas.map(despesa => [despesa.nome, parseFloat(despesa.valor)])
+            ]}
+            options={{
+              title: 'Despesas por Categoria',
+              chartArea: { width: '50%' },
+              hAxis: {
+                title: 'Valor',
+                minValue: 0,
+              },
+              vAxis: {
+                title: 'Despesa',
+              },
+              backgroundColor: 'transparent',
+              legendTextStyle: { color: 'white' }, // Define a cor das legendas como branca
+              textStyle: { color: 'white' } // Define a cor do texto no gráfico como branca
+            }}
+          />
         </div>
-        <div style={{ marginTop: '20px', textAlign: 'center', color: valorRestanteCongregacao < 0 ? 'red' : 'white' }}>
-          {valorRestanteCongregacao < 0 ? 'A congregação já gastou toda sua renda' : ''}
+      
+        {/* Tabela de despesas */}
+        <div className="table-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+          <h2>Despesas Dashboard</h2>
+ 
+          <div style={{ marginTop: '20px', textAlign: 'center', color: 'white' }}>
+            <p>Valor das despesas: R${valorDespesas.toFixed(2)}</p>
+            <p>Valor restante para a congregação: R${valorRestanteCongregacao.toFixed(2)}</p>
+          </div>
+          <div style={{ marginTop: '20px', textAlign: 'center', color: valorRestanteCongregacao < 0 ? 'red' : 'white' }}>
+            {valorRestanteCongregacao < 0 ? 'A congregação já gastou toda sua renda' : ''}
+          </div>
         </div>
       </div>
     </div>
