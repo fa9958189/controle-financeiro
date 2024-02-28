@@ -58,7 +58,7 @@ export default function ListarDespesas() {
         <div className="table-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
    
         {/* Gráfico de despesas */}
-        <div style={{ width: '500px', height: '300px', margin: 'auto', backgroundColor: 'transparent' }}>
+        <div style={{ width: '1100px', height: '300px', margin: 'auto', backgroundColor: 'transparent' }}>
           <Chart
             chartType="ColumnChart"
             loader={<div>Carregando Gráfico</div>}

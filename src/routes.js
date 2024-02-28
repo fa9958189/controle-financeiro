@@ -9,7 +9,10 @@ import CadastroDespesas from './pages/cadastroDespesas';
 import ListarPorcentagem from './pages/listarPorcentagem';
 import ListarDespesas from './pages/listarDespesas';
 import SaidaProduto from './pages/saidaProduto';
-import ListarDashboard from './pages/listarDashboard'; // Importação da página listarDashboard
+import ListarDashboard from './pages/listarDashboard';
+import ListarFechamento from './pages/listarFechamento';
+import CadastroFechamento from './pages/cadastroFechamento';
+import EditarFechamento from './pages/editarFechamento'; // Importação da página EditarFechamento
 
 export default function Rotas() {
    return (
@@ -24,7 +27,10 @@ export default function Rotas() {
              <Route path="/listarporcentagem" element={<ListarPorcentagem />} />
              <Route path="/listardespesas" element={<ListarDespesas />} />
              <Route path="/saidaproduto" element={<SaidaProduto />} />
-             <Route path="/listardashboard" element={<ListarDashboard />} /> // Adicionando a rota listarDashboard
+             <Route path="/listardashboard" element={<ListarDashboard />} />
+             <Route path="/listarfechamento" element={<ListarFechamento />} />
+             <Route path="/cadastrofechamento" element={<CadastroFechamento />} />
+             <Route path="/editarfechamento/:id" element={<EditarFechamento />} /> {/* Adicionando a rota EditarFechamento */}
           </Routes>  
        </BrowserRouter>
    );

@@ -51,7 +51,7 @@ export default function Editarusuario() {
       dadosnovos.push(usuario);
       localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
       alert("Usuário salvo com sucesso");
-      navigate('/listadizimista');
+      navigate('/listardizimista');
     }
   }
 
