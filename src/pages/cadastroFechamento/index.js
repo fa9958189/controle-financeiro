@@ -1,5 +1,3 @@
-// CadastroUsuario.js
-
 import React, { useState } from 'react';
 import '../../pages/global.css';
 import Menu from '../../componente/Menu';
@@ -8,35 +6,40 @@ import { ImCancelCircle } from "react-icons/im";
 import { useNavigate } from 'react-router-dom'; 
 import Head from '../../componente/Head';
 
-export default function CadastroUsuario() {
-    const navigate = useNavigate();
-    const [valorDespesas, setValorDespesas] = useState(""); // Estado para o valor das despesas do mês
-    const [saldoMes, setSaldoMes] = useState(""); // Estado para o saldo do mês
-    const [mesFechamento, setMesFechamento] = useState(getMesPadrao()); // Estado para o mês do fechamento
-
-    function getMesPadrao() {
-        const today = new Date();
-        const month = String(today.getMonth() + 1).padStart(2, '0'); // Obtendo o mês atual
-        return month; // Retornando o mês atual como padrão
-    }
+export default function CadastroFechamento() {
+    const navigate = useNavigate ();
+    const [valorDespesaMes, setValorDespesaMes] = useState("");
+    const [saldoMes, setSaldoMes] = useState("");
+    const [mesFechamento, setMesFechamento] = useState("Janeiro"); // Valor padrão
+    const [ano, setAno] = useState(""); // Novo estado para armazenar o ano
+    
+    const mesesDoAno = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
 
     function salvardados(e) {
         e.preventDefault();
-        if (valorDespesas === "")
-            alert("Preencha o campo Valor das Despesas do Mês");
+        if (valorDespesaMes === "")
+            alert("Preencha o campo Valor Despesa Mês");
         else if (saldoMes === "")
-            alert("Preencha o campo Saldo do Mês");
+            alert("Preencha o campo Saldo Mês");
+        else if (ano === "")
+            alert("Preencha o campo Ano");
         else {
-            const fechamento = {
-                valorDespesas,
+            const usuarioFechamento = {
+                id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+                tipo: "fechamento", // Definindo o tipo como "fechamento"
+                valorDespesaMes,
                 saldoMes,
-                mesFechamento
+                mesFechamento,
+                ano // Incluindo o ano no objeto do usuário de fechamento
             };
-            const fechamentos = JSON.parse(localStorage.getItem("fechamentos") || "[]");
-            fechamentos.push(fechamento);
-            localStorage.setItem("fechamentos", JSON.stringify(fechamentos));
+            const banco = JSON.parse(localStorage.getItem("cd-fechamento") || "[]");
+            banco.push(usuarioFechamento);
+            localStorage.setItem("cd-fechamento", JSON.stringify(banco));
             alert("Fechamento salvo com sucesso");
-            navigate("/listarfechamento"); // Redireciona para listarfechamento
+            navigate("/listarfechamento"); // Redireciona para listausuario
         }
     }
 
@@ -47,44 +50,44 @@ export default function CadastroUsuario() {
             </div>
             <div className='principal'>
                 <Head title="Cadastro de Fechamento" />
-                
                 <div className='form-container'>
                     <form className='form-cadastro' onSubmit={salvardados}>
                         <input 
-                            type='number'
-                            value={valorDespesas}
-                            onChange={e => setValorDespesas(e.target.value)}
-                            placeholder='Valor das Despesas do Mês'
+                            type='text'
+                            value={valorDespesaMes}
+                            onChange={e => setValorDespesaMes(e.target.value)}
+                            placeholder='Despesa do Mês'
                         /> 
                         <input 
-                            type='number' 
+                            type='text' 
                             value={saldoMes}
                             onChange={e => setSaldoMes(e.target.value)}
                             placeholder='Saldo do Mês' 
                         /> 
+                    
                         <select 
-                            value={mesFechamento}
+                            id="mesFechamento" 
+                            value={mesFechamento} 
                             onChange={e => setMesFechamento(e.target.value)}
                         >
-                            <option value="01">Janeiro</option>
-                            <option value="02">Fevereiro</option>
-                            <option value="03">Março</option>
-                            <option value="04">Abril</option>
-                            <option value="05">Maio</option>
-                            <option value="06">Junho</option>
-                            <option value="07">Julho</option>
-                            <option value="08">Agosto</option>
-                            <option value="09">Setembro</option>
-                            <option value="10">Outubro</option>
-                            <option value="11">Novembro</option>
-                            <option value="12">Dezembro</option>
+                            {mesesDoAno.map((mes, index) => (
+                                <option key={index} value={mes}>{mes}</option>
+                            ))}
                         </select>
+                        
+                        <input 
+                            type='text' 
+                            value={ano}
+                            onChange={e => setAno(e.target.value)}
+                            placeholder='Ano' 
+                        />
+                        
                         <div className='acao'>
-                            <button className='btn-save'>
+                            <button type="submit" className='btn-save'>
                                 <FaSave />
                                 Salvar
                             </button>
-                            <button className='btn-cancel'>
+                            <button type="button" className='btn-cancel'>
                                 <ImCancelCircle />
                                 Cancelar
                             </button>  

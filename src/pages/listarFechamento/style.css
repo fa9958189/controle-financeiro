@@ -1,0 +1,8 @@
+
+.table-container {
+    max-height: 400px; /* Defina o tamanho máximo da altura da tabela */
+    overflow-y: auto; /* Ative a rolagem vertical quando necessário */
+  }
+  
+  /* Adicione outros estilos conforme necessário */
+  

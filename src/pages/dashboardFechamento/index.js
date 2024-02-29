@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../pages/global.css';
 import Menu from '../../componente/Menu';
@@ -6,6 +6,7 @@ import { FiTrash } from "react-icons/fi";
 import Head from '../../componente/Head';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import './style.css'; // Importe o arquivo de estilo aqui
 
 export default function Listausuario() {
   const banco = JSON.parse(localStorage.getItem("cd-fechamento") || "[]");
@@ -41,7 +42,6 @@ export default function Listausuario() {
       <div className='principal'>
         <Head title="Fechamento do Mês" />
         <Link to="/cadastrofechamento" className='btn-novo'>Entrada Fechamento</Link>
-        <Link to="/dashboardfechamento" className='btn-dash'>Dashboard Fechamento</Link>
         <div className="table-container">
           <table>
             <thead>

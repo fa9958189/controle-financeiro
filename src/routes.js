@@ -12,7 +12,8 @@ import SaidaProduto from './pages/saidaProduto';
 import ListarDashboard from './pages/listarDashboard';
 import ListarFechamento from './pages/listarFechamento';
 import CadastroFechamento from './pages/cadastroFechamento';
-import EditarFechamento from './pages/editarFechamento'; // Importação da página EditarFechamento
+import EditarFechamento from './pages/editarFechamento';
+import DashboardFechamento from './pages/dashboardFechamento'; // Importação da página DashboardFechamento
 
 export default function Rotas() {
    return (
@@ -30,7 +31,8 @@ export default function Rotas() {
              <Route path="/listardashboard" element={<ListarDashboard />} />
              <Route path="/listarfechamento" element={<ListarFechamento />} />
              <Route path="/cadastrofechamento" element={<CadastroFechamento />} />
-             <Route path="/editarfechamento/:id" element={<EditarFechamento />} /> {/* Adicionando a rota EditarFechamento */}
+             <Route path="/editarfechamento/:id" element={<EditarFechamento />} />
+             <Route path="/dashboardfechamento" element={<DashboardFechamento />} /> {/* Adicionando a rota DashboardFechamento */}
           </Routes>  
        </BrowserRouter>
    );
