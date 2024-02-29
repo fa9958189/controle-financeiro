@@ -53,16 +53,16 @@ export default function CadastroFechamento() {
                 <div className='form-container'>
                     <form className='form-cadastro' onSubmit={salvardados}>
                         <input 
-                            type='text'
-                            value={valorDespesaMes}
-                            onChange={e => setValorDespesaMes(e.target.value)}
-                            placeholder='Despesa do Mês'
-                        /> 
-                        <input 
                             type='text' 
                             value={saldoMes}
                             onChange={e => setSaldoMes(e.target.value)}
                             placeholder='Saldo do Mês' 
+                        />
+                        <input 
+                            type='text'
+                            value={valorDespesaMes}
+                            onChange={e => setValorDespesaMes(e.target.value)}
+                            placeholder='Despesa do Mês'
                         /> 
                     
                         <select 

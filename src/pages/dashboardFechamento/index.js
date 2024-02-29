@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import '../../pages/global.css';
 import Menu from '../../componente/Menu';
-import { FiTrash } from "react-icons/fi";
 import Head from '../../componente/Head';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer } from 'recharts';
 import './style.css'; // Importe o arquivo de estilo aqui
 
 export default function Listausuario() {
@@ -34,6 +33,12 @@ export default function Listausuario() {
     });
   };
 
+  const data = banco.map(usu => ({
+    saldo: usu.saldoMes,
+    mes: usu.mesFechamento,
+    ano: usu.ano
+  }));
+
   return (
     <div className="dashboard-container">
       <div className='menu'>
@@ -41,37 +46,17 @@ export default function Listausuario() {
       </div>
       <div className='principal'>
         <Head title="Fechamento do Mês" />
-        <Link to="/cadastrofechamento" className='btn-novo'>Entrada Fechamento</Link>
-        <div className="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Valor Despesa</th>
-                <th>Saldo</th>
-                <th>Mês</th>
-                <th>Ano</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {banco.map((usu) => (
-                <tr key={usu.id}>
-                  <td>{usu.valorDespesaMes}</td>
-                  <td>{usu.saldoMes}</td>
-                  <td>{usu.mesFechamento}</td>
-                  <td>{usu.ano}</td>
-                  <td className='botoes'>
-                    <FiTrash
-                      size={18}
-                      color='red'
-                      onClick={() => apagar(usu.id)}
-                      cursor="pointer"
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="chart-container">
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="mes" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="saldo" fill="#8884d8" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     </div>

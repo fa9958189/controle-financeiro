@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../pages/global.css';
 import Menu from '../../componente/Menu';
@@ -6,6 +6,7 @@ import { FiTrash } from "react-icons/fi";
 import Head from '../../componente/Head';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import './style.css'; // Importe o arquivo de estilo aqui
 
 export default function Listausuario() {
   const banco = JSON.parse(localStorage.getItem("cd-fechamento") || "[]");
@@ -46,8 +47,8 @@ export default function Listausuario() {
           <table>
             <thead>
               <tr>
+                <th>Valor Dízimo</th>
                 <th>Valor Despesa</th>
-                <th>Saldo</th>
                 <th>Mês</th>
                 <th>Ano</th>
                 <th></th>
@@ -56,9 +57,9 @@ export default function Listausuario() {
             <tbody>
               {banco.map((usu) => (
                 <tr key={usu.id}>
-                  <td>{usu.valorDespesaMes}</td>
-                  <td>{usu.saldoMes}</td>
-                  <td>{usu.mesFechamento}</td>
+                  <td>{parseFloat(usu.saldoMes).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                  <td>{parseFloat(usu.valorDespesaMes).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                  <td className={parseInt(usu.saldoMes) > parseInt(usu.valorDespesaMes) ? 'mes-verde' : 'mes-vermelho'}>{usu.mesFechamento}</td>
                   <td>{usu.ano}</td>
                   <td className='botoes'>
                     <FiTrash
