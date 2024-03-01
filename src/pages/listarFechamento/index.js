@@ -44,6 +44,7 @@ export default function Listausuario() {
         <Link to="/cadastrofechamento" className='btn-novo'>Entrada Fechamento</Link>
         <Link to="/dashboardfechamento" className='btn-dash'>Dashboard Fechamento</Link>
         <div className="table-container">
+        <div style={{ overflowY: 'auto', maxHeight: '300px' }}>
           <table>
             <thead>
               <tr>
@@ -73,6 +74,7 @@ export default function Listausuario() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>
