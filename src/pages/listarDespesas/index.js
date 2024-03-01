@@ -65,7 +65,7 @@ export default function ListarDespesas() {
           <tbody>
             <tr>
               <td>Congregação: {porcentagemCongregacao.toFixed(2)}%</td>
-              <td>R${valorPorcentagemCongregacao.toFixed(2)}</td>
+              <td>R${valorPorcentagemCongregacao.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
             </tr>
           </tbody>
         </table>
@@ -85,19 +85,19 @@ export default function ListarDespesas() {
               {despesas.slice(0, 5).map(despesa => (
                 <tr key={despesa.id}>
                   <td>{despesa.nome}</td>
-                  <td>{despesa.valor}</td>
+                  <td>R${despesa.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                   <td>{despesa.data}</td>
                   <td>
                     <button onClick={() => handleExcluir(despesa.id)}>Excluir</button>
                   </td>
                 </tr>
               ))}
-                       <div style={{ marginTop: '20px', textAlign: 'center', color: 'white' }}>
-                  <p>Valor das despesas: R${valorDespesas.toFixed(2)}</p>
-                  <p>Valor restante para a congregação: R${valorRestanteCongregacao.toFixed(2)}</p>
-                </div>
             </tbody>
           </table>
+          <div style={{ marginTop: '20px', textAlign: 'center', color: 'white' }}>
+            <p>Valor das despesas: R${valorDespesas.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+            <p>Valor restante para a congregação: R${valorRestanteCongregacao.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+          </div>
         </div>
         <div style={{ marginTop: '20px', textAlign: 'center', color: valorRestanteCongregacao < 0 ? 'red' : 'white' }}>
           {valorRestanteCongregacao < 0 ? 'A congregação já gastou toda sua renda' : ''}

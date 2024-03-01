@@ -57,7 +57,7 @@ export default function Listausuario() {
               <tr key={usu.id}>
                 <td>{usu.id}</td>
                 <td>{usu.nome}</td>
-                <td>{usu.valor}</td>
+                <td>R${usu.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                 <td>{usu.data}</td>
                 <td className='botoes'>
                   <Link to={`/editardizimista/${usu.id}`}>
